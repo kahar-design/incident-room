@@ -2,98 +2,75 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Supply Chain & SQL Portfolio</title>
+<title>Supply Chain & SQL Engineer</title>
 <link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script src="script.js" defer></script>
 </head>
 
 <body>
 
+<div id="loader">Loading portfolio...</div>
+
 <nav>
-  <h2>Kawtar Portfolio</h2>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#cv">CV</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="logo">SCM • SQL • Systems</div>
+  <div class="nav-right">
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('fr')">FR</button>
+  </div>
 </nav>
 
 <header class="hero">
   <div class="hero-text">
-    <h1>Supply Chain Engineer <br> & SQL Problem Solver</h1>
-    <p>I investigate systems, data and operations.</p>
-    <a href="#projects" class="btn">Explore my work</a>
+    <h1 id="heroTitle"></h1>
+    <p id="heroSub"></p>
+    <a href="#projects" class="btn" id="ctaBtn"></a>
   </div>
+  <img src="photo.jpg" class="profile">
 </header>
 
-<section id="about" class="section">
-  <h2>About Me</h2>
-  <p>
-  Engineer in Supply Chain Management passionate about data, SQL and
-  operational systems troubleshooting.  
-  I enjoy investigating incidents, analysing databases and improving processes.
-  </p>
+<section class="stats">
+  <div><h2 class="counter" data-target="3">0</h2><p>SQL Investigations</p></div>
+  <div><h2 class="counter" data-target="12">0</h2><p>Business Processes Studied</p></div>
+  <div><h2 class="counter" data-target="100">0</h2><p>% Problem Solving Mindset</p></div>
 </section>
 
-<section id="skills" class="section grey">
-  <h2>Core Skills</h2>
-  <div class="cards">
-
-    <div class="card">
-      <h3>SQL & Data</h3>
-      <p>Joins, subqueries, data debugging, monitoring queries.</p>
-    </div>
-
-    <div class="card">
-      <h3>Supply Chain</h3>
-      <p>Inventory, logistics, procurement, operations.</p>
-    </div>
-
-    <div class="card">
-      <h3>Troubleshooting</h3>
-      <p>Incident investigation & root cause analysis.</p>
-    </div>
-
+<section class="section">
+<h2>Experience Timeline</h2>
+<div class="timeline">
+  <div class="timeline-item">
+    <h3>Supply Chain Engineer Intern</h3>
+    <p>Stock optimisation & supply chain analysis</p>
   </div>
-</section>
-
-<section id="projects" class="section">
-  <h2>SQL Incident Room</h2>
-  <div class="cards">
-
-    <div class="card">
-      <h3>Healthcare Incident</h3>
-      <p>Missing patient invoices investigation.</p>
-      <a href="incident1.html">View case →</a>
-    </div>
-
-    <div class="card">
-      <h3>Warehouse Incident</h3>
-      <p>Negative stock debugging.</p>
-      <a href="incident2.html">View case →</a>
-    </div>
-
-    <div class="card">
-      <h3>Logistics Incident</h3>
-      <p>Orders stuck in processing.</p>
-      <a href="incident3.html">View case →</a>
-    </div>
-
+  <div class="timeline-item">
+    <h3>SQL & Systems Portfolio</h3>
+    <p>Incident investigation & troubleshooting</p>
   </div>
+</div>
 </section>
 
-<section id="cv" class="section grey">
-  <h2>Download CV</h2>
-  <a href="cv-fr.pdf" class="btn">CV Français</a>
-  <a href="cv-en.pdf" class="btn">CV English</a>
+<section id="projects" class="section grey">
+<h2>SQL Incident Investigations</h2>
+<div class="cards">
+  <div class="card"><h3>Healthcare Incident</h3><a href="incident1.html">Open case →</a></div>
+  <div class="card"><h3>Warehouse Incident</h3><a href="incident2.html">Open case →</a></div>
+  <div class="card"><h3>Logistics Incident</h3><a href="incident3.html">Open case →</a></div>
+</div>
 </section>
 
-<section id="contact" class="section">
-  <h2>Contact</h2>
-  <p>Email : yourmail@email.com</p>
-  <p>LinkedIn : linkedin.com/in/yourprofile</p>
+<section class="section">
+<h2>Download CV</h2>
+<a id="cvBtn" class="btn"></a>
+</section>
+
+<section class="section grey">
+<h2>Contact me</h2>
+<form id="contact-form">
+<input type="text" name="name" placeholder="Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<textarea name="message" placeholder="Message"></textarea>
+<button type="submit" class="btn">Send Message</button>
+</form>
 </section>
 
 </body>
