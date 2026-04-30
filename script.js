@@ -1,12 +1,16 @@
-// typing effect simple
-const text = "I solve Supply Chain & SQL problems.";
-let i = 0;
+function setLang(lang){
 
-function typing(){
-  if(i < text.length){
-    document.querySelector(".typing").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typing, 50);
-  }
+ fetch(lang+".json")
+ .then(r=>r.json())
+ .then(d=>{
+
+   document.getElementById("title").innerText = d.title;
+   document.getElementById("subtitle").innerText = d.subtitle;
+
+   let cv = document.getElementById("cvBtn");
+   cv.innerText = d.cvText;
+   cv.href = lang==="fr" ? "cv-fr.pdf" : "cv-en.pdf";
+ });
 }
-typing();
+
+setLang("en");
