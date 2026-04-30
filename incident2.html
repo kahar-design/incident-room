@@ -1,1 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<h1>📦 Incident #087 — Negative Warehouse Stock</h1>
+
+<h2>Problem</h2>
+<p>Stock levels became negative after shipments.</p>
+
+<pre>
+SELECT product_id, quantity
+FROM inventory
+WHERE quantity < 0;
+</pre>
+
+<p><b>Finding:</b> 17 products with negative stock.</p>
+
+<pre>
+SELECT *
+FROM shipments
+WHERE processed = 'before_receiving';
+</pre>
+
+<p><b>Root Cause:</b> Shipment processed before goods receipt.</p>
+
+<p><b>Resolution:</b> Fixed process order & updated records.</p>
+
+<a href="index.html">← Back</a>
+
+</body>
+</html>
