@@ -65,12 +65,18 @@
 
 <section class="section grey">
 <h2>Contact me</h2>
-<form id="contact-form">
-<input type="text" name="name" placeholder="Name" required>
-<input type="email" name="email" placeholder="Email" required>
-<textarea name="message" placeholder="Message"></textarea>
-<button type="submit" class="btn">Send Message</button>
+
+<form action="https://formsubmit.co/kawtar.amrha@gmail.com" method="POST">
+  <input type="text" name="name" placeholder="Name" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <textarea name="message" placeholder="Message"></textarea>
+
+  <button type="submit" class="btn">Send Message</button>
+
+  <input type="hidden" name="_subject" value="New message from portfolio">
+  <input type="hidden" name="_captcha" value="false">
 </form>
+
 </section>
 
 </body>
