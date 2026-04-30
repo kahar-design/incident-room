@@ -1,34 +1,12 @@
-emailjs.init("YOUR_PUBLIC_KEY");
+// typing effect simple
+const text = "I solve Supply Chain & SQL problems.";
+let i = 0;
 
-window.onload=()=>document.getElementById("loader").style.display="none";
-
-function setLang(lang){
- fetch(lang+".json")
- .then(res=>res.json())
- .then(data=>{
-   heroTitle.innerText=data.heroTitle;
-   heroSub.innerText=data.heroSub;
-   ctaBtn.innerText=data.cta;
-   cvBtn.innerText=data.cv;
-   cvBtn.href= lang==="fr" ? "cv-fr.pdf":"cv-en.pdf";
- });
+function typing(){
+  if(i < text.length){
+    document.querySelector(".typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 50);
+  }
 }
-
-setLang("en");
-
-const counters=document.querySelectorAll(".counter");
-counters.forEach(counter=>{
- const update=()=>{
-   const target=+counter.dataset.target;
-   const c=+counter.innerText;
-   const inc=target/200;
-   if(c<target){counter.innerText=Math.ceil(c+inc);setTimeout(update,10);}
- }
- update();
-});
-
-document.getElementById("contact-form").addEventListener("submit",function(e){
- e.preventDefault();
- emailjs.sendForm("service_xxx","template_xxx",this)
- .then(()=>alert("Message sent!"));
-});
+typing();
