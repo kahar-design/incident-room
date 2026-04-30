@@ -1,63 +1,232 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="style.css">
-</head>
+/* ===== GLOBAL ===== */
+body{
+  margin:0;
+  font-family:Inter, Arial;
+  background:#f6f8fc;
+  color:#0f172a;
+  scroll-behavior:smooth;
+}
 
-<body>
+/* ===== NAV ===== */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:18px 60px;
+  background:white;
+  box-shadow:0 2px 15px rgba(0,0,0,0.05);
+  z-index:999;
+}
 
-<div class="incident-header fade">
-  <h1>Incident #065 - Orders Stuck in Processing</h1>
-  <div class="badges">
-    <span class="badge high">MAJOR</span>
-    <span class="badge system">ORDER MANAGEMENT</span>
-  </div>
-  <p class="subtitle">Delayed order execution detected in production pipeline</p>
-</div>
+nav .logo{
+  font-weight:700;
+  color:#2563eb;
+}
 
-<div class="step fade">
-<h2>1. Issue Description</h2>
-<p>120+ orders stuck in "processing" status for more than 24 hours.</p>
-</div>
+.nav-right button{
+  margin-left:10px;
+  padding:8px 14px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
+  background:#eef2ff;
+}
 
-<div class="step fade">
-<h2>2. Query Investigation</h2>
+/* ===== HERO ===== */
+.hero{
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding-top:80px;
+}
 
-<div class="sql-box">
-SELECT order_id  
-FROM orders  
-WHERE status = 'processing'  
-AND order_date < NOW() - INTERVAL 1 DAY;
-</div>
+.hero h1{
+  font-size:42px;
+  font-weight:800;
+}
 
-<p>→ 120 delayed orders identified.</p>
-</div>
+.hero p{
+  opacity:0.7;
+  margin-top:10px;
+}
 
-<div class="step fade">
-<h2>3. Payment System Check</h2>
+/* ===== BUTTONS ===== */
+.btn{
+  padding:12px 25px;
+  border-radius:30px;
+  background:#2563eb;
+  color:white;
+  text-decoration:none;
+  display:inline-block;
+  margin-top:20px;
+  transition:0.3s;
+}
 
-<div class="sql-box">
-SELECT transaction_id, status  
-FROM payment_service  
-WHERE status = 'timeout';
-</div>
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 20px rgba(37,99,235,0.3);
+}
 
-<p>→ Payment API timeout detected.</p>
-</div>
+/* ===== SECTION ===== */
+.section{
+  padding:80px 15%;
+  text-align:center;
+}
 
-<div class="step fade">
-<h2>4. Root Cause</h2>
-<p>External payment service outage causing queue blockage.</p>
-</div>
+/* ===== KPI DASHBOARD ===== */
+.dashboard{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:60px;
+}
 
-<div class="step fade">
-<h2>5. Resolution</h2>
-<ul>
-<li>Restarted payment service connection</li>
-<li>Reprocessed stuck orders</li>
-<li>Added retry mechanism</li>
-</ul>
-</div>
+.kpi{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  width:200px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+  transition:0.3s;
+}
 
-</body>
-</html>
+.kpi:hover{
+  transform:translateY(-5px);
+}
+
+.kpi h2{
+  color:#2563eb;
+}
+
+/* ===== PROJECT CARDS ===== */
+.grid{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  width:240px;
+  text-decoration:none;
+  color:#0f172a;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+}
+
+/* ===== INCIDENT PAGE ===== */
+.incident-page{
+  background:#f6f8fc;
+}
+
+/* HEADER INCIDENT */
+.incident-header{
+  background:#0f172a;
+  color:white;
+  padding:60px 20px;
+  text-align:center;
+  border-radius:0 0 20px 20px;
+}
+
+.incident-header h1{
+  font-size:28px;
+}
+
+.badges{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:15px;
+}
+
+.badge{
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:600;
+}
+
+.high{background:#ef4444;}
+.medium{background:#f59e0b;}
+.system{background:#3b82f6;}
+
+/* INCIDENT LAYOUT */
+.layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+  padding:60px 15%;
+}
+
+/* CARD INCIDENT */
+.card{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* STEP */
+.step{
+  margin-top:20px;
+}
+
+/* SQL BOX */
+.sql{
+  background:#0b1220;
+  color:#22c55e;
+  padding:15px;
+  border-radius:10px;
+  font-family:monospace;
+  margin-top:10px;
+  overflow-x:auto;
+}
+
+/* RESULT */
+.result{
+  background:#e0f2fe;
+  padding:10px;
+  margin-top:10px;
+  border-left:4px solid #2563eb;
+}
+
+/* ===== CONTACT FORM ===== */
+form{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  max-width:400px;
+  margin:auto;
+}
+
+input, textarea{
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #e5e7eb;
+  outline:none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .layout{
+    grid-template-columns:1fr;
+    padding:30px;
+  }
+
+  .dashboard{
+    flex-direction:column;
+    align-items:center;
+  }
+}
