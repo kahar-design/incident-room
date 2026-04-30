@@ -6,30 +6,57 @@
 
 <body>
 
-<h1>📦 Incident #087 — Negative Warehouse Stock</h1>
+<div class="incident-header fade">
+  <h1>Incident #087 - Negative Warehouse Stock</h1>
+  <div class="badges">
+    <span class="badge high">CRITICAL</span>
+    <span class="badge system">SUPPLY CHAIN SYSTEM</span>
+  </div>
+  <p class="subtitle">Inventory inconsistency detected across warehouse database</p>
+</div>
 
-<h2>Problem</h2>
-<p>Stock levels became negative after shipments.</p>
+<div class="step fade">
+<h2>1. Issue Description</h2>
+<p>Multiple products showing negative stock after shipment processing.</p>
+</div>
 
-<pre>
-SELECT product_id, quantity
-FROM inventory
+<div class="step fade">
+<h2>2. Data Check</h2>
+
+<div class="sql-box">
+SELECT product_id, quantity  
+FROM inventory  
 WHERE quantity < 0;
-</pre>
+</div>
 
-<p><b>Finding:</b> 17 products with negative stock.</p>
+<p>→ 17 SKUs affected by negative stock values.</p>
+</div>
 
-<pre>
-SELECT *
-FROM shipments
-WHERE processed = 'before_receiving';
-</pre>
+<div class="step fade">
+<h2>3. Shipment Analysis</h2>
 
-<p><b>Root Cause:</b> Shipment processed before goods receipt.</p>
+<div class="sql-box">
+SELECT shipment_id, status  
+FROM shipments  
+WHERE processed_before_receipt = 1;
+</div>
 
-<p><b>Resolution:</b> Fixed process order & updated records.</p>
+<p>→ Shipments processed before goods receipt confirmation.</p>
+</div>
 
-<a href="index.html">← Back</a>
+<div class="step fade">
+<h2>4. Root Cause</h2>
+<p>Process misalignment between warehouse receiving and shipment posting.</p>
+</div>
+
+<div class="step fade">
+<h2>5. Resolution</h2>
+<ul>
+<li>Corrected process workflow</li>
+<li>Rebalanced inventory tables</li>
+<li>Added validation rule before shipment posting</li>
+</ul>
+</div>
 
 </body>
 </html>
