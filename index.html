@@ -2,81 +2,122 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Supply Chain & SQL Engineer</title>
+<title>Supply Chain Intelligence Portfolio</title>
+
 <link rel="stylesheet" href="style.css">
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script src="script.js" defer></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<div id="loader">Loading portfolio...</div>
+<!-- floating background animation -->
+<div class="bg-animation"></div>
 
+<!-- NAV -->
 <nav>
-  <div class="logo">SCM • SQL • Systems</div>
-  <div class="nav-right">
-    <button onclick="setLang('en')">EN</button>
-    <button onclick="setLang('fr')">FR</button>
+  <div class="logo">SCM × SQL Intelligence</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Cases</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
-<header class="hero">
-  <div class="hero-text">
-    <h1 id="heroTitle"></h1>
-    <p id="heroSub"></p>
-    <a href="#projects" class="btn" id="ctaBtn"></a>
-  </div>
-  
-</header>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
 
-<section class="stats">
-  <div><h2 class="counter" data-target="3">0</h2><p>SQL Investigations</p></div>
-  <div><h2 class="counter" data-target="12">0</h2><p>Business Processes Studied</p></div>
-  <div><h2 class="counter" data-target="100">0</h2><p>% Problem Solving Mindset</p></div>
+    <h1 class="typing">I solve Supply Chain & SQL problems.</h1>
+
+    <p class="subtitle">
+      Engineering mindset. Data-driven decisions. Incident resolution.
+    </p>
+
+    <div class="buttons">
+      <a href="#projects" class="btn primary">Open Cases</a>
+      <a href="#about" class="btn secondary">About Me</a>
+    </div>
+
+  </div>
 </section>
 
+<!-- ABOUT -->
+<section id="about" class="section glass">
+  <h2>About Me</h2>
+
+  <p>
+    Supply Chain Engineer specialized in data analysis, SQL troubleshooting
+    and operational system optimization.
+  </p>
+
+  <div class="highlight-box">
+    I don’t just study systems — I investigate them like real incidents.
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <h2>Core Skills</h2>
+
+  <div class="grid">
+    <div class="card">SQL Investigation</div>
+    <div class="card">Supply Chain Optimization</div>
+    <div class="card">ERP Systems</div>
+    <div class="card">Root Cause Analysis</div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section dark">
+
+  <h2>Open Incident Cases</h2>
+
+  <div class="grid">
+
+    <a href="incident1.html" class="card glow">
+      🚨 Healthcare Billing Failure
+    </a>
+
+    <a href="incident2.html" class="card glow">
+      📦 Warehouse Stock Anomaly
+    </a>
+
+    <a href="incident3.html" class="card glow">
+      🚚 Logistics Delay Incident
+    </a>
+
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section glass">
+
+  <h2>Contact Me</h2>
+
+  <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST">
+
+    <input type="text" name="name" placeholder="Your name" required>
+    <input type="email" name="email" placeholder="Your email" required>
+    <textarea name="message" placeholder="Your message"></textarea>
+
+    <button class="btn primary">Send Message</button>
+
+  </form>
+
+</section>
+
+<!-- CV -->
 <section class="section">
-<h2>Experience Timeline</h2>
-<div class="timeline">
-  <div class="timeline-item">
-    <h3>Supply Chain Engineer Intern</h3>
-    <p>Stock optimisation & supply chain analysis</p>
+  <h2>Download CV</h2>
+
+  <div class="buttons">
+    <a href="cv-fr.pdf" class="btn primary">CV Français</a>
+    <a href="cv-en.pdf" class="btn secondary">CV English</a>
   </div>
-  <div class="timeline-item">
-    <h3>SQL & Systems Portfolio</h3>
-    <p>Incident investigation & troubleshooting</p>
-  </div>
-</div>
-</section>
-
-<section id="projects" class="section grey">
-<h2>SQL Incident Investigations</h2>
-<div class="cards">
-  <div class="card"><h3>Healthcare Incident</h3><a href="incident1.html">Open case →</a></div>
-  <div class="card"><h3>Warehouse Incident</h3><a href="incident2.html">Open case →</a></div>
-  <div class="card"><h3>Logistics Incident</h3><a href="incident3.html">Open case →</a></div>
-</div>
-</section>
-
-<section class="section">
-<h2>Download CV</h2>
-<a id="cvBtn" class="btn"></a>
-</section>
-
-<section class="section grey">
-<h2>Contact me</h2>
-
-<form action="https://formsubmit.co/kawtar.amrha@gmail.com" method="POST">
-  <input type="text" name="name" placeholder="Name" required>
-  <input type="email" name="email" placeholder="Email" required>
-  <textarea name="message" placeholder="Message"></textarea>
-
-  <button type="submit" class="btn">Send Message</button>
-
-  <input type="hidden" name="_subject" value="New message from portfolio">
-  <input type="hidden" name="_captcha" value="false">
-</form>
-
 </section>
 
 </body>
