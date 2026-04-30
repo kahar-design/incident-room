@@ -4,58 +4,70 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="incident-page">
 
-<div class="incident-header fade">
-  <h1>Incident #104 - Missing Patient Invoices</h1>
+<!-- HEADER -->
+<div class="incident-header">
+  <h1>Incident #104 — Missing Patient Invoices</h1>
+
   <div class="badges">
     <span class="badge high">HIGH SEVERITY</span>
     <span class="badge system">HEALTHCARE ERP</span>
   </div>
-  <p class="subtitle">Billing process failure detected in production system</p>
 </div>
 
-<div class="step fade">
-<h2>1. Issue Description</h2>
-<p>Hospital reports 53 completed visits without generated invoices.</p>
-</div>
+<!-- LAYOUT -->
+<div class="layout">
 
-<div class="step fade">
-<h2>2. Data Investigation</h2>
+  <!-- LEFT -->
+  <div class="card">
 
-<div class="sql-box">
+    <h3>Context</h3>
+    <p>
+      Hospital reported missing invoices after completed patient visits.
+    </p>
+
+    <h3>Impact</h3>
+    <p>Revenue inconsistency detected in billing module.</p>
+
+  </div>
+
+  <!-- RIGHT -->
+  <div class="card">
+
+    <h3>Investigation</h3>
+
+    <div class="step">
+      <b>Step 1 — Missing invoices detection</b>
+
+      <div class="sql">
 SELECT patient_id, visit_date  
 FROM visits  
 WHERE invoice_id IS NULL;
-</div>
+      </div>
 
-<p>→ 53 records found with missing billing reference.</p>
-</div>
+      <p>53 records found</p>
+    </div>
 
-<div class="step fade">
-<h2>3. System Check</h2>
+    <div class="step">
+      <b>Step 2 — Billing system check</b>
 
-<div class="sql-box">
+      <div class="sql">
 SELECT job_id, status  
 FROM billing_jobs  
 WHERE status = 'FAILED';
-</div>
+      </div>
 
-<p>→ Billing job failed after last deployment update.</p>
-</div>
+      <p>Batch processing failure detected</p>
+    </div>
 
-<div class="step fade">
-<h2>4. Root Cause</h2>
-<p>Timezone misalignment caused batch processing failure in billing pipeline.</p>
-</div>
+    <div class="step">
+      <b>Root Cause</b>
+      <p>Timezone mismatch in batch processing system.</p>
+    </div>
 
-<div class="step fade">
-<h2>5. Resolution</h2>
-<ul>
-<li>Fixed timezone configuration</li>
-<li>Reprocessed billing batch</li>
-<li>Validated invoice generation</li>
-</ul>
+  </div>
+
 </div>
 
 </body>
