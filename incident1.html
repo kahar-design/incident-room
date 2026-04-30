@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<title>Incident 104</title>
+</head>
 
+<body>
+
+<h1>🚨 Incident #104 — Missing Patient Invoices</h1>
+
+<h2>Incident Alert</h2>
+<p>53 patient visits completed but no invoices generated.</p>
+
+<h2>Step 1 — Detect missing invoices</h2>
+
+<pre>
+SELECT patient_id, visit_date
+FROM visits
+WHERE invoice_id IS NULL;
+</pre>
+
+<p><b>Finding:</b> 53 visits without invoice detected.</p>
+
+<h2>Step 2 — Check billing jobs</h2>
+
+<pre>
+SELECT *
+FROM billing_jobs
+WHERE status = 'FAILED';
+</pre>
+
+<p><b>Finding:</b> Billing job failed after system update.</p>
+
+<h2>Root Cause</h2>
+<p>Timezone mismatch caused billing job to skip records.</p>
+
+<h2>Resolution</h2>
+<ul>
+<li>Fixed timezone parameter</li>
+<li>Reprocessed billing job</li>
+<li>Invoices generated successfully</li>
+</ul>
+
+<a href="index.html">← Back to dashboard</a>
+
+</body>
+</html>
