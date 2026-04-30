@@ -2,111 +2,85 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Supply Chain Intelligence Portfolio</title>
+<title>Supply Chain Intelligence</title>
 
 <link rel="stylesheet" href="style.css">
 <script src="script.js" defer></script>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- floating background animation -->
-<div class="bg-animation"></div>
-
 <!-- NAV -->
 <nav>
-  <div class="logo">SCM × SQL Intelligence</div>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Cases</a>
-    <a href="#contact">Contact</a>
+  <div class="logo">SCM Intelligence</div>
+
+  <div class="nav-right">
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('fr')">FR</button>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
+  <h1 id="title"></h1>
+  <p id="subtitle"></p>
 
-    <h1 class="typing">I solve Supply Chain & SQL problems.</h1>
-
-    <p class="subtitle">
-      Engineering mindset. Data-driven decisions. Incident resolution.
-    </p>
-
-    <div class="buttons">
-      <a href="#projects" class="btn primary">Open Cases</a>
-      <a href="#about" class="btn secondary">About Me</a>
-    </div>
-
-  </div>
+  <a href="#projects" class="btn">Explore Projects</a>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="section glass">
+<section class="section">
   <h2>About Me</h2>
 
   <p>
-    Supply Chain Engineer specialized in data analysis, SQL troubleshooting
-    and operational system optimization.
+    Supply Chain Engineer specialized in operations, data analysis and SQL troubleshooting.
+    I transform complex systems into structured decisions.
   </p>
-
-  <div class="highlight-box">
-    I don’t just study systems — I investigate them like real incidents.
-  </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills" class="section">
-  <h2>Core Skills</h2>
+<!-- KPI DASHBOARD -->
+<section class="dashboard">
 
-  <div class="grid">
-    <div class="card">SQL Investigation</div>
-    <div class="card">Supply Chain Optimization</div>
-    <div class="card">ERP Systems</div>
-    <div class="card">Root Cause Analysis</div>
+  <div class="kpi">
+    <h2>SQL</h2>
+    <p>Advanced Queries</p>
+    <span>90%</span>
   </div>
+
+  <div class="kpi">
+    <h2>Supply Chain</h2>
+    <p>Operations Understanding</p>
+    <span>95%</span>
+  </div>
+
+  <div class="kpi">
+    <h2>Problem Solving</h2>
+    <p>Incident Resolution</p>
+    <span>98%</span>
+  </div>
+
 </section>
 
 <!-- PROJECTS -->
 <section id="projects" class="section dark">
 
-  <h2>Open Incident Cases</h2>
+  <h2>SQL Incident Cases</h2>
 
   <div class="grid">
 
-    <a href="incident1.html" class="card glow">
-      🚨 Healthcare Billing Failure
+    <a href="incident1.html" class="card">
+      Healthcare Billing Failure
     </a>
 
-    <a href="incident2.html" class="card glow">
-      📦 Warehouse Stock Anomaly
+    <a href="incident2.html" class="card">
+      Warehouse Stock Anomaly
     </a>
 
-    <a href="incident3.html" class="card glow">
-      🚚 Logistics Delay Incident
+    <a href="incident3.html" class="card">
+      Logistics Delay Incident
     </a>
 
   </div>
-
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section glass">
-
-  <h2>Contact Me</h2>
-
-  <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST">
-
-    <input type="text" name="name" placeholder="Your name" required>
-    <input type="email" name="email" placeholder="Your email" required>
-    <textarea name="message" placeholder="Your message"></textarea>
-
-    <button class="btn primary">Send Message</button>
-
-  </form>
 
 </section>
 
@@ -114,10 +88,26 @@
 <section class="section">
   <h2>Download CV</h2>
 
-  <div class="buttons">
-    <a href="cv-fr.pdf" class="btn primary">CV Français</a>
-    <a href="cv-en.pdf" class="btn secondary">CV English</a>
-  </div>
+  <a id="cvBtn" class="btn"></a>
+</section>
+
+<!-- CONTACT -->
+<section class="section">
+
+  <h2>Let’s connect</h2>
+
+  <p>Open to opportunities in Supply Chain, Data & SQL roles.</p>
+
+  <form action="https://formsubmit.co/TONEMAIL@gmail.com" method="POST">
+
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" placeholder="Message"></textarea>
+
+    <button class="btn">Send Message</button>
+
+  </form>
+
 </section>
 
 </body>
