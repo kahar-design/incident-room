@@ -1,1 +1,39 @@
+body {
+    font-family: Arial;
+    background:#0b0f17;
+    color:white;
+}
 
+.header {
+    text-align:center;
+    padding:40px;
+}
+
+.dashboard {
+    display:flex;
+    justify-content:center;
+    gap:30px;
+}
+
+.card {
+    background:#151c2c;
+    padding:30px;
+    border-radius:10px;
+    width:250px;
+    box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+.card a {
+    color:#4da3ff;
+    text-decoration:none;
+}
+
+.high { border-top:5px solid red; }
+.medium { border-top:5px solid orange; }
+.low { border-top:5px solid green; }
+
+pre {
+    background:black;
+    padding:15px;
+    border-radius:5px;
+}
