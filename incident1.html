@@ -2,47 +2,61 @@
 <html>
 <head>
 <link rel="stylesheet" href="style.css">
-<title>Incident 104</title>
 </head>
 
 <body>
 
-<h1>🚨 Incident #104 — Missing Patient Invoices</h1>
+<div class="incident-header fade">
+  <h1>Incident #104 - Missing Patient Invoices</h1>
+  <div class="badges">
+    <span class="badge high">HIGH SEVERITY</span>
+    <span class="badge system">HEALTHCARE ERP</span>
+  </div>
+  <p class="subtitle">Billing process failure detected in production system</p>
+</div>
 
-<h2>Incident Alert</h2>
-<p>53 patient visits completed but no invoices generated.</p>
+<div class="step fade">
+<h2>1. Issue Description</h2>
+<p>Hospital reports 53 completed visits without generated invoices.</p>
+</div>
 
-<h2>Step 1 — Detect missing invoices</h2>
+<div class="step fade">
+<h2>2. Data Investigation</h2>
 
-<pre>
-SELECT patient_id, visit_date
-FROM visits
+<div class="sql-box">
+SELECT patient_id, visit_date  
+FROM visits  
 WHERE invoice_id IS NULL;
-</pre>
+</div>
 
-<p><b>Finding:</b> 53 visits without invoice detected.</p>
+<p>→ 53 records found with missing billing reference.</p>
+</div>
 
-<h2>Step 2 — Check billing jobs</h2>
+<div class="step fade">
+<h2>3. System Check</h2>
 
-<pre>
-SELECT *
-FROM billing_jobs
+<div class="sql-box">
+SELECT job_id, status  
+FROM billing_jobs  
 WHERE status = 'FAILED';
-</pre>
+</div>
 
-<p><b>Finding:</b> Billing job failed after system update.</p>
+<p>→ Billing job failed after last deployment update.</p>
+</div>
 
-<h2>Root Cause</h2>
-<p>Timezone mismatch caused billing job to skip records.</p>
+<div class="step fade">
+<h2>4. Root Cause</h2>
+<p>Timezone misalignment caused batch processing failure in billing pipeline.</p>
+</div>
 
-<h2>Resolution</h2>
+<div class="step fade">
+<h2>5. Resolution</h2>
 <ul>
-<li>Fixed timezone parameter</li>
-<li>Reprocessed billing job</li>
-<li>Invoices generated successfully</li>
+<li>Fixed timezone configuration</li>
+<li>Reprocessed billing batch</li>
+<li>Validated invoice generation</li>
 </ul>
-
-<a href="index.html">← Back to dashboard</a>
+</div>
 
 </body>
 </html>
