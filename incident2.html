@@ -4,58 +4,59 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="incident-page">
 
-<div class="incident-header fade">
-  <h1>Incident #087 - Negative Warehouse Stock</h1>
+<div class="incident-header">
+  <h1>Incident #087 — Warehouse Stock Anomaly</h1>
+
   <div class="badges">
     <span class="badge high">CRITICAL</span>
-    <span class="badge system">SUPPLY CHAIN SYSTEM</span>
+    <span class="badge system">SUPPLY CHAIN</span>
   </div>
-  <p class="subtitle">Inventory inconsistency detected across warehouse database</p>
 </div>
 
-<div class="step fade">
-<h2>1. Issue Description</h2>
-<p>Multiple products showing negative stock after shipment processing.</p>
-</div>
+<div class="layout">
 
-<div class="step fade">
-<h2>2. Data Check</h2>
+  <div class="card">
+    <h3>Context</h3>
+    <p>Negative stock values detected after shipment updates.</p>
+  </div>
 
-<div class="sql-box">
+  <div class="card">
+
+    <h3>Investigation</h3>
+
+    <div class="step">
+      <b>Stock validation</b>
+
+      <div class="sql">
 SELECT product_id, quantity  
 FROM inventory  
 WHERE quantity < 0;
-</div>
+      </div>
 
-<p>→ 17 SKUs affected by negative stock values.</p>
-</div>
+      <p>17 SKUs affected</p>
+    </div>
 
-<div class="step fade">
-<h2>3. Shipment Analysis</h2>
+    <div class="step">
+      <b>Process check</b>
 
-<div class="sql-box">
-SELECT shipment_id, status  
+      <div class="sql">
+SELECT shipment_id  
 FROM shipments  
 WHERE processed_before_receipt = 1;
-</div>
+      </div>
 
-<p>→ Shipments processed before goods receipt confirmation.</p>
-</div>
+      <p>Workflow mismatch detected</p>
+    </div>
 
-<div class="step fade">
-<h2>4. Root Cause</h2>
-<p>Process misalignment between warehouse receiving and shipment posting.</p>
-</div>
+    <div class="step">
+      <b>Root Cause</b>
+      <p>Shipment posting before warehouse confirmation.</p>
+    </div>
 
-<div class="step fade">
-<h2>5. Resolution</h2>
-<ul>
-<li>Corrected process workflow</li>
-<li>Rebalanced inventory tables</li>
-<li>Added validation rule before shipment posting</li>
-</ul>
+  </div>
+
 </div>
 
 </body>
