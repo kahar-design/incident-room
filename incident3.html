@@ -6,28 +6,58 @@
 
 <body>
 
-<h1>🚚 Incident #065 — Orders Stuck in Processing</h1>
+<div class="incident-header fade">
+  <h1>Incident #065 - Orders Stuck in Processing</h1>
+  <div class="badges">
+    <span class="badge high">MAJOR</span>
+    <span class="badge system">ORDER MANAGEMENT</span>
+  </div>
+  <p class="subtitle">Delayed order execution detected in production pipeline</p>
+</div>
 
-<pre>
-SELECT order_id
-FROM orders
-WHERE status='processing'
+<div class="step fade">
+<h2>1. Issue Description</h2>
+<p>120+ orders stuck in "processing" status for more than 24 hours.</p>
+</div>
+
+<div class="step fade">
+<h2>2. Query Investigation</h2>
+
+<div class="sql-box">
+SELECT order_id  
+FROM orders  
+WHERE status = 'processing'  
 AND order_date < NOW() - INTERVAL 1 DAY;
-</pre>
+</div>
 
-<p><b>Finding:</b> 120 orders stuck >24h.</p>
+<p>→ 120 delayed orders identified.</p>
+</div>
 
-<pre>
-SELECT *
-FROM payment_service
-WHERE status='timeout';
-</pre>
+<div class="step fade">
+<h2>3. Payment System Check</h2>
 
-<p><b>Root Cause:</b> Payment API timeout.</p>
+<div class="sql-box">
+SELECT transaction_id, status  
+FROM payment_service  
+WHERE status = 'timeout';
+</div>
 
-<p><b>Resolution:</b> Restarted service & reprocessed orders.</p>
+<p>→ Payment API timeout detected.</p>
+</div>
 
-<a href="index.html">← Back</a>
+<div class="step fade">
+<h2>4. Root Cause</h2>
+<p>External payment service outage causing queue blockage.</p>
+</div>
+
+<div class="step fade">
+<h2>5. Resolution</h2>
+<ul>
+<li>Restarted payment service connection</li>
+<li>Reprocessed stuck orders</li>
+<li>Added retry mechanism</li>
+</ul>
+</div>
 
 </body>
 </html>
