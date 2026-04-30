@@ -1,1 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<h1>🚚 Incident #065 — Orders Stuck in Processing</h1>
+
+<pre>
+SELECT order_id
+FROM orders
+WHERE status='processing'
+AND order_date < NOW() - INTERVAL 1 DAY;
+</pre>
+
+<p><b>Finding:</b> 120 orders stuck >24h.</p>
+
+<pre>
+SELECT *
+FROM payment_service
+WHERE status='timeout';
+</pre>
+
+<p><b>Root Cause:</b> Payment API timeout.</p>
+
+<p><b>Resolution:</b> Restarted service & reprocessed orders.</p>
+
+<a href="index.html">← Back</a>
+
+</body>
+</html>
